@@ -12,7 +12,7 @@ blue_max = 14
 #line = "Game 12: 1 green, 8 red, 5 blue; 6 red, 12 blue; 2 blue, 15 red; 14 blue, 15 red, 1 green; 8 red, 9 blue"
 
 def isGamePossible(gameLine):
-    gameDraws = gameLine.split(': ')[1]
+    gameDraws = gameLine.strip().split(': ')[1]
     for draw in gameDraws.split('; '):
         cubes = draw.split(", ")
         for color in cubes:
@@ -36,18 +36,17 @@ def getPowerSet(gameLine):
             if a[1] == "red": redPower = max(redPower, int(a[0]))
     return bluePower * greenPower * redPower
 
-# first part
 with open("input_2.txt") as gamesFile:
     for game in gamesFile:
+        # first part
         if isGamePossible(game):
-            #print(game)
             validGames += gameCounter
-        gameCounter += 1
-
-# second part
-with open("input_2.txt") as gamesFile:
-    for game in gamesFile:
+        
+        # second part
         powerGames += getPowerSet(game)
+        
+        #incrementing game counter so I don't need to parse game number for first part
+        gameCounter += 1
         
 print('Sum of valid games: ' + str(validGames))
 print('Sum of power games: ' + str(powerGames))
