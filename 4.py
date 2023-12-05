@@ -9,10 +9,8 @@ INPUT_FILE = "input_4.txt"
 # Initializing variables
 sum_wins = 0  # first answer
 sum_scratchcards = 0  # second answer
-winnerStackMultiplier = []
-winnerStackMultiplier.append(1)
-currCard = 0
 
+currCard = 0
 gameCards = []
 cardsSum = []
 
@@ -54,6 +52,7 @@ for game in gameCards:
     sum_wins += localWins
     currCard += 1
 
+# Summing up all the scratchcards
 for n in cardsSum:
     sum_scratchcards += n
 
